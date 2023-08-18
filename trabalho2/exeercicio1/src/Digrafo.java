@@ -1,3 +1,5 @@
+package trabalho2.exeercicio1.src;
+
 import java.util.LinkedList;
 
 public class Digrafo {

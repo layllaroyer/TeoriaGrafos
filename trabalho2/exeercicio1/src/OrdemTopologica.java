@@ -1,3 +1,7 @@
+package trabalho2.exeercicio1.src;
+
+import trabalho2.exeercicio1.src.Digrafo;
+
 import java.util.Stack;
 public class OrdemTopologica {
     boolean []marcado;
