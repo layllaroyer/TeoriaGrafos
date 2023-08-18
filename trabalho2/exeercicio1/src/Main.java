@@ -1,3 +1,5 @@
+package trabalho2.exeercicio1.src;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
