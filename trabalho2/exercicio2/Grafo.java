@@ -1,7 +1,5 @@
 package trabalho2.exercicio2;
 
-import javax.swing.*;
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,32 +39,16 @@ public class Grafo {
         return r;
     }
 
-//    public void imprimeVertice(){
-//        for(int i=0; i< vertices.size(); i++){
-//            System.out.println(vertices.get(i).nome);
-//        }
-    //}
-
     public void imprimirArestas(){
         ArrayList<String> arrDest = new ArrayList<>();
         ArrayList<String> arrOri = new ArrayList<>();
 
         for (Vertice u: vertices) {
             for(Aresta e: u.adj){
-                //System.out.println("Destino " + e.destino.nome);
                 arrOri.add(e.origem.nome);
                 arrDest.add(e.destino.nome);
             }
         }
-
-        System.out.println("Origem ");
-        System.out.println(arrOri);
-
-        System.out.println("Destino");
-        System.out.println(arrDest);
-
-
-
         int i = 0;
         for( i = 0 ; i < arrDest.size();i++)
         {
@@ -75,7 +57,6 @@ public class Grafo {
                 armazena.add(arrOri.get(i));
             }
         }
-        System.out.println(armazena);
     }
     public void checagem(ArrayList<String> testes) {
         for (int i = 0; i < testes.size(); i++) {

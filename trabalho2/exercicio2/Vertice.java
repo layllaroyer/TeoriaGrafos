@@ -15,10 +15,4 @@ public class Vertice {
     void addAdj(Aresta e) {
         adj.add(e);
     }
-
-    void imprimir(){
-        for(Aresta aresta : adj){
-            System.out.println(aresta.destino.nome);
-        }
-    }
 }
