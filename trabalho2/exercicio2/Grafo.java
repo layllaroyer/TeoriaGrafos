@@ -6,6 +6,7 @@ import java.util.List;
 public class Grafo {
     List<Vertice> vertices;
     List<Aresta> arestas;
+    List<String> armazena = new ArrayList<>();
 
     public Grafo() {
         vertices = new ArrayList<Vertice>();
@@ -37,4 +38,34 @@ public class Grafo {
         }
         return r;
     }
+
+    public void imprimirArestas(){
+        ArrayList<String> arrDest = new ArrayList<>();
+        ArrayList<String> arrOri = new ArrayList<>();
+
+        for (Vertice u: vertices) {
+            for(Aresta e: u.adj){
+                arrOri.add(e.origem.nome);
+                arrDest.add(e.destino.nome);
+            }
+        }
+        int i = 0;
+        for( i = 0 ; i < arrDest.size();i++)
+        {
+            if(!(arrOri.contains(arrDest.get(i))))
+            {
+                armazena.add(arrOri.get(i));
+            }
+        }
+    }
+    public void checagem(ArrayList<String> testes) {
+        for (int i = 0; i < testes.size(); i++) {
+            if (!(armazena.contains(testes.get(i)))) {
+                System.out.println(testes.get(i) + " safe");
+            } else {
+                System.out.println(testes.get(i) + " trapped");
+            }
+        }
+    }
+
 }
