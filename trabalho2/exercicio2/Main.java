@@ -19,7 +19,8 @@ public class Main {
 
         //b.imprimir();
 
-        System.out.println(g);
+        //System.out.println(g);
+        g.imprimirArestas();
     }
 }
 
