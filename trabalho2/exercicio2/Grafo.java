@@ -1,5 +1,6 @@
 package trabalho2.exercicio2;
 
+import javax.swing.*;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 public class Grafo {
     List<Vertice> vertices;
     List<Aresta> arestas;
+    List<String> armazena = new ArrayList<>();
 
     public Grafo() {
         vertices = new ArrayList<Vertice>();
@@ -39,6 +41,12 @@ public class Grafo {
         return r;
     }
 
+//    public void imprimeVertice(){
+//        for(int i=0; i< vertices.size(); i++){
+//            System.out.println(vertices.get(i).nome);
+//        }
+    //}
+
     public void imprimirArestas(){
         ArrayList<String> arrDest = new ArrayList<>();
         ArrayList<String> arrOri = new ArrayList<>();
@@ -64,10 +72,19 @@ public class Grafo {
         {
             if(!(arrOri.contains(arrDest.get(i))))
             {
-                System.out.println(arrDest.get(i));
+                armazena.add(arrOri.get(i));
             }
         }
-
-
+        System.out.println(armazena);
     }
+    public void checagem(ArrayList<String> testes) {
+        for (int i = 0; i < testes.size(); i++) {
+            if (!(armazena.contains(testes.get(i)))) {
+                System.out.println(testes.get(i) + " safe");
+            } else {
+                System.out.println(testes.get(i) + " trapped");
+            }
+        }
+    }
+
 }
