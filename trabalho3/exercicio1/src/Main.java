@@ -15,12 +15,9 @@ public class Main {
                 if(linha.charAt(0) != '0'){
                     if(linha.length() == 1){
                         quantLugares = Integer.parseInt(String.valueOf(linha.charAt(0)))+1;
-                       // System.out.println("Tamanho do grafo"+quantLugares);
                     }
-                    else{
+                    else
                         linhasArquivo.add(linha);
-                        System.out.println(linha);
-                    }
                     linha = lerArq.readLine();
                 }
                 else {
@@ -52,11 +49,12 @@ public class Main {
                         j++;
                     } else
                         vertice2 = Integer.parseInt(String.valueOf(auxiliar.charAt(j)));
-                    //System.out.println(vertice2);
                     lugares.novaAresta(vertice1, vertice2);
                 }
             }
         }
-        System.out.println(lugares.adj[2]);
+        BuscaArticulacao articulacao = new BuscaArticulacao(lugares);
+        int quantArticulacao = articulacao.buscaArticulacaoTodos(lugares);
+        System.out.println(quantArticulacao);
     }
 }
