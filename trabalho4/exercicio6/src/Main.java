@@ -41,19 +41,18 @@ public class Main {
         grafo.dfs();
         Grafo grafoT = grafo.transpose();
         grafoT.dfsTransposto(grafo);
-        if(grafoT.componenteUnico>0)
-            System.out.println(grafoT.quantMenor+grafoT.componenteUnico);
-        else
-            System.out.println(grafoT.quantMenor);
-        /*linguagens[1].add("hoje");
-        nomes.add("hoje");
-        System.out.println(nomes);
-        System.out.println(linguagens[1]);
-        System.out.println(grafo.adj[2]);
-        for(int i =0; i<n; i++)
-            System.out.println(grafo.descoberta[i]);
-        for(int i =0; i<n; i++)
-            System.out.println(grafoT.descoberta[i]);*/
+        int quantidade = 0;
+        int quantidadeMaior = 0;
+        for(int i=0;i<grafoT.componenteQuant.size();i++){
+            int aux = grafoT.componenteQuant.get(i) ;
+            if(aux<grafoT.quantMaior)
+                quantidade=quantidade+aux;
+            else if(aux == grafoT.quantMaior)
+                quantidadeMaior++;
+        }
+        if(quantidadeMaior>1)
+            quantidade=quantidade+(quantidadeMaior-1)*grafoT.quantMaior;
+        System.out.println(quantidade);
     }
 
     private static void clearBuffer(Scanner scanner) {
@@ -73,11 +72,11 @@ class Grafo{
     int []descoberta;
     int tempo = 0;
     int componentes = 0;
-    int quantMenor = 0;
+    int quantMaior = 0;
 
     int contaComponentes = 0;
 
-    int componenteUnico = 0;
+    ArrayList<Integer> componenteQuant = new ArrayList<>();
     public Grafo(int v){
         this.vertices = v;
         this.descoberta = new int[v];
@@ -126,10 +125,9 @@ class Grafo{
                     dfs_visita(pos);
                     componentes=componentes+1;
                 }
-                if(contaComponentes==1)
-                    componenteUnico++;
-                if(((quantMenor==0)||(contaComponentes<quantMenor))&&(contaComponentes>1))
-                    quantMenor=contaComponentes;
+                componenteQuant.add(contaComponentes);
+                if(quantMaior<contaComponentes)
+                    quantMaior=contaComponentes;
             }
             contaComponentes = 0;
         }
