@@ -9,7 +9,6 @@ public class Main {
             Grafo grafo = new Grafo(totalPalavras);
             String linguaInicial = scanner.next();
             String linguaFinal = scanner.next();
-            System.out.println(linguaInicial + " " + linguaFinal);
             int contador = 0;
             while (contador < totalPalavras) {
                 String lingua1 = scanner.next();
@@ -20,13 +19,16 @@ public class Main {
                 grafo.addAresta(lingua1, lingua2,palavra);
                 contador++;
             }
-            for(int i=0;i<grafo.arestas.size();i++){
-                System.out.println(grafo.arestas.get(i).vertice1+" "+grafo.arestas.get(i).vertice2+" "+grafo.arestas.get(i).palavra+" "+grafo.arestas.get(i).peso);
-            }
-            for(int i = 0; i<grafo.vertices.size();i++){
-                System.out.println(grafo.vertices.get(i).vertice);
-            }
-
+            grafo.dijkstra(linguaInicial);
+            int i = grafo.existeVertice(linguaFinal);
+            if(i>=0) {
+                Vertice v = grafo.vertices.get(i);
+                if (v.pai != -1) {
+                    System.out.println(v.distancia);
+                } else
+                    System.out.println("impossivel");
+            }else
+                System.out.println("impossivel");
             totalPalavras = scanner.nextInt();
         }
     }
